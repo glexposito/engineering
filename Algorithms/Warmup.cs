@@ -74,8 +74,8 @@ public static class Warmup
 
         var times = n / s.Length;
 
-        var rest = n % s.Length;
+        var remainder = n % s.Length;
 
-        return wordFrequency * times + s[..(int)rest].Count(c => c == 'a');
+        return wordFrequency * times + s[..(int)remainder].Count(c => c == 'a');
     }
 }
