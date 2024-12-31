@@ -7,9 +7,11 @@ public class Logger
 
     public bool ShouldPrintMessage(int timestamp, string message)
     {
-        if (!_logs.ContainsKey(message) || timestamp >= _logs[message] )
+        if (!_logs.TryGetValue(message, out var value) || timestamp >= value)
         {
-            _logs[message] = timestamp + 10;
+            value = timestamp + 10;
+            _logs[message] = value;
+            
             return true;
         }
 

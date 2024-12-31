@@ -34,6 +34,69 @@ public class MediumTests
         Medium.AddBinaryStrings(a, b).Should().Be(expected);
     }
 
+    [Fact]
+    public void Test_FindHighAccessEmployees()
+    {
+        IList<IList<string>> accessTimes =
+            [["a", "0549"], ["b", "0457"], ["a", "0532"], ["a", "0621"], ["b", "0540"]];
+
+        var result = Medium.FindHighAccessEmployees(accessTimes);
+
+        result.Should().Equal(["a"]);
+    }
+
+    [Fact]
+    public void Test_Merge()
+    {
+        int[][] intervals = [[1, 3], [2, 6], [8, 10], [15, 18]];
+        int[][] expected = [[1, 6], [8, 10], [15, 18]];
+
+        var result = Medium.Merge(intervals);
+
+        result.Should().BeEquivalentTo(expected, options => options.WithStrictOrdering());
+    }
+
+    [Theory]
+    [InlineData(new int[] { 1, 1, 2, 3, 3, 4, 4, 8, 8 }, 2)]
+    [InlineData(new int[] { 3, 3, 7, 7, 10, 11, 11 }, 10)]
+    public void SingleNonDuplicate(int[] nums, int expected)
+    {
+        Medium.SingleNonDuplicateLogN(nums).Should().Be(expected);
+    }
+
+    [Fact]
+    public void MaxArea()
+    {
+        int[] height = [10, 14, 10, 4, 10, 2, 6, 1, 6, 12];
+
+        Medium.MaxArea(height).Should().Be(96);
+    }
+
+    [Theory]
+    [InlineData("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT", new string[] { "AAAAACCCCC", "CCCCCAAAAA" })]
+    [InlineData("AAAAAAAAAAAAA", new string[] { "AAAAAAAAAA" })]
+    public void FindRepeatedDnaSequences(string sequence, IList<string> sequences)
+    {
+        Medium.FindRepeatedDnaSequences(sequence).Should().Equal(sequences);
+    }
+    
+    [Theory]
+    [InlineData("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT", new string[] { "AAAAACCCCC", "CCCCCAAAAA" })]
+    [InlineData("AAAAAAAAAAAAA", new string[] { "AAAAAAAAAA" })]
+    public void FindRepeatedDnaSequences1(string sequence, IList<string> sequences)
+    {
+        Medium.FindRepeatedDnaSequences1(sequence).Should().Equal(sequences);
+    }
+
+    [Theory]
+    [InlineData(3749, "MMMDCCXLIX")]
+    [InlineData(58, "LVIII")]
+    [InlineData(1994, "MCMXCIV")]
+    public void IntToRoman(int num, string expectedRoman)
+    {
+        Medium.IntToRoman(num).Should().Be(expectedRoman);
+    }
+
     public static IEnumerable<object[]> TestDataKSmallestPairs =>
         new List<object[]>
         {

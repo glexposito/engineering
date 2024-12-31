@@ -26,6 +26,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Algorithms\Algorithms.csproj" />
+      <ProjectReference Include="..\DataStructures\DataStructures.csproj" />
       <ProjectReference Include="..\Design\Design.csproj" />
     </ItemGroup>
 
